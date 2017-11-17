@@ -28,7 +28,7 @@ angular.module('dashboard.directives.ModelFieldCanvas', [
 
   function getTemplate() {
     var template = '\
-    <img ng-src="{{ data.fileUrl || data }} " class="disabled-div" ng-hide="!disabled"/></img>\
+    <img ng-src="{{ data.fileUrl || data }}" class="disabled-div" ng-hide="!disabled"/></img>\
     <canvas ng-hide="disabled" ng-signature-pad="signature" width="300" height="150"></canvas>\
     <button ng-hide="disabled" class="btn btn-default" ng-click="clearCanvas()">Clear</button>\
   ';
@@ -63,7 +63,8 @@ angular.module('dashboard.directives.ModelFieldCanvas', [
           scope.isLoading = false;
           //Load Image because of CORS issue
           var image = new Image();
-          image.setAttribute('crossOrigin', 'anonymous');
+          // image.setAttribute('crossOrigin', 'anonymous');
+          // image.crossOrigin = 'anonymous';
           image.onload = function() {
             var context = scope.signature._canvas.getContext("2d");
             context.drawImage(image, 0, 0);
