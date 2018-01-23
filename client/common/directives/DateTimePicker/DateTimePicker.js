@@ -27,6 +27,7 @@ angular.module('dashboard.directive.DateTimePicker', [
         //If no static attribute then use dynamic angular attributes
         if (!scope.format) scope.format = scope.ngFormat;
         if (!scope.viewMode) scope.viewMode = scope.ngViewMode;
+        if (scope.ngTimeZone && scope.ngTimeZone !== 'utc') moment.tz.setDefault(scope.ngTimeZone)
 
         if (scope.format && scope.format.indexOf('DD-MMM-YYYY') > -1 && scope.locale === 'es') {
           //Hack to fix spanish date parsing via Spanish for DD-MMM-YYYY format as
