@@ -92,8 +92,8 @@ angular.module('dashboard.Dashboard.Model.List', [
     if ($window.ga) $window.ga('send', 'pageview', { page: $location.path() });
 
     //Make a column visible
-    $scope.$on('changeColumnVisibility', function (event, arg) {
-      changeColumnVisibility(arg.index, arg.visibility);
+    $scope.$on('updateColumnVisibility', function (event, index, visibility) {
+      updateColumnVisibility(index, visibility);
     })
 
     //Check if Chart needs to be displayed
@@ -178,7 +178,7 @@ angular.module('dashboard.Dashboard.Model.List', [
   }
 
   //Change visibility of a column 
-  function changeColumnVisibility(index, visibility) {
+  function updateColumnVisibility(index, visibility) {
     $scope.columns[index].visible = visibility;
   }
 
