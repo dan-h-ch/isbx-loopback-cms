@@ -180,7 +180,7 @@ angular.module('dashboard.Dashboard.Model.List', [
   //Change visibility of a column 
   function updateColumnVisibility(column, visibility) {
     var index = _.findIndex($scope.columns, {field: column});
-    if (index) {
+    if (index >= 0) {
       $scope.columns[index].visible = visibility;
     }
   }
