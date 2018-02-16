@@ -2,7 +2,7 @@ angular.module('dashboard.Utils', [
   'dashboard.Config'
 ])
 
-.service('Utils', function(Config, $http, $q) {
+.service('Utils', function(Config, $http, $q, $cookies) {
   "ngInject";
 
   var apiRequests = {}; //stores active http requests using method+path as key
@@ -42,6 +42,7 @@ angular.module('dashboard.Utils', [
     
     apiRequests[method+":"+path] = deferred;
     params.timeout = deferred.promise; 
+    params.headers = {'Authorization': $cookies.get('accessToken')};
     $http(params)
       .then(function(response) {
         deferred.resolve(response.data);
