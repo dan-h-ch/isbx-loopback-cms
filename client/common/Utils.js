@@ -43,6 +43,7 @@ angular.module('dashboard.Utils', [
     
     apiRequests[method+":"+path] = deferred;
     params.timeout = deferred.promise; 
+    params.params && params.params.accessToken ? delete params.params.accessToken : '';
     data.accessToken ? accessToken = data.accessToken : accessToken = $cookies.get('accessToken');
     params.headers = {'Authorization': accessToken};
     $http(params)
