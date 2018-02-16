@@ -46,11 +46,11 @@ angular.module('dashboard.services.Session', [
   this.setSession = function(userInfo) {
     var authModel = "Users";
     if (config.authModel) authModel = config.authModel;
-    $cookies.put('accessToken', userInfo.id);
-    return Utils.apiHelper('GET', authModel + '/' + userInfo.userId + '/Roles')
+    return Utils.apiHelper('GET', authModel + '/' + userInfo.userId + '/Roles', {'accessToken': userInfo.id})
       .then(function(roles) {
         $cookies.put('lastActive', new Date());//initiallize after successful login
         session = userInfo;
+        $cookies.put('accessToken', userInfo.id);
         $cookies.put('username', userInfo.user.username);
         $cookies.put('userId', userInfo.userId);
         $cookies.put('session', JSON.stringify(session));
