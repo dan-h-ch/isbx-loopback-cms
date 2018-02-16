@@ -23,6 +23,7 @@ angular.module('dashboard.Utils', [
    */
   this.apiHelper = function(method, path, data, params) {
     var deferred = $q.defer();
+    var accessToken = '';
     params = params || {};
     params.method = method;
     if (path[0] == "/") {
@@ -42,7 +43,8 @@ angular.module('dashboard.Utils', [
     
     apiRequests[method+":"+path] = deferred;
     params.timeout = deferred.promise; 
-    params.headers = {'Authorization': $cookies.get('accessToken')};
+    data.accessToken ? accessToken = data.accessToken : accessToken = $cookies.get('accessToken');
+    params.headers = {'Authorization': accessToken};
     $http(params)
       .then(function(response) {
         deferred.resolve(response.data);
