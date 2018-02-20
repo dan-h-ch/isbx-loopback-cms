@@ -24,7 +24,7 @@ angular.module('dashboard.Utils', [
   this.apiHelper = function(method, path, data, params) {
     var deferred = $q.defer();
     var accessToken = '';
-    var dataCopy = JSON.parse(JSON.stringify(data));
+    var dataCopy = data ? JSON.parse(JSON.stringify(data)) : {};
     params = params || {};
     params.method = method;
     if (path[0] == "/") {
