@@ -169,7 +169,7 @@ angular.module('dashboard.directives.ModelField', [
             </div>\
           </div>';
         break;
-      case 'statuses':
+      case 'status-multi-select':
         template = '<label class="col-sm-2 control-label" ng-if="data.isQualifyingProject" >{{ display.label || key | translate }}:</label>\
           <div class="col-sm-10 multi-select" ng-if="data.isQualifyingProject">\
             <div class="error-message" ng-if="display.error.length > 0">{{ display.error }}</div>\
