@@ -1072,6 +1072,16 @@ model-field-video-edit .image-container {
   border: solid 1px #dedede;
   cursor: pointer;
 }
+model-field-image-edit .display-only,
+model-field-video-edit .display-only {
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  vertical-align: top;
+  margin-right: 8px;
+  border: solid 1px #dedede;
+  cursor: default;
+}
 model-field-image-edit .video-container,
 model-field-video-edit .video-container {
   display: inline-block;

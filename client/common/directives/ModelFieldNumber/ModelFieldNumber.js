@@ -37,7 +37,7 @@ angular.module('dashboard.directives.ModelFieldNumber', [])
         scope.checkNumber = checkNumber;
         scope.validateAndParseNumbers = validateAndParseNumbers;
 
-        if (property.display.allowDecimal === true) {
+        if (property.display.allowDecimal === true && property.display.scaleValue > 0) {
           scope.data = $filter('decimalWithScale')(scope.data, property.display.scaleValue);
         }
 
@@ -93,7 +93,7 @@ angular.module('dashboard.directives.ModelFieldNumber', [])
           return
         }
 
-        if (property.display.allowDecimal === true) {
+        if (property.display.allowDecimal === true && property.display.scaleValue > 0) {
           var decimalString = $filter('decimalWithScale')(e.target.value, property.display.scaleValue);
           if (isNaN(decimalString) && scope.ngError) {
             scope.ngError({error: new Error('Please enter a valid number')});
