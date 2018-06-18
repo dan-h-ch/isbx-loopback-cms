@@ -59,6 +59,8 @@ angular.module('dashboard.services.FileUpload', [
     //Get S3 credentials from Server
     var deferred = $q.defer();
     self.getS3Credentials(path, fileType ? fileType : "", isRegistrySurvey).then(function(credentials) {
+      console.log('crednetials ---->', credentials)
+      console.log('fileType', fileType)
       $upload.upload({
         url: credentials.uploadUrl, //S3 upload url including bucket name,
         method: 'POST',
